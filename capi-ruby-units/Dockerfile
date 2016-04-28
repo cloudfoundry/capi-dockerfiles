@@ -32,3 +32,10 @@ RUN  \
         zip && \
     apt-get clean
 
+RUN \
+    wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/master/Gemfile.lock && \
+    wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/master/Gemfile && \
+    bundle install && \
+    rm Gemfile && \
+    rm Gemfile.lock
+
