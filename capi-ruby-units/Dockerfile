@@ -1,12 +1,6 @@
 FROM ruby:2.3
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
-# Bundler 1.12.x fixes an incompatibility with RubyGems 2.6.2+
-# https://github.com/bundler/bundler/issues/4381
-# We can remove this once bundler 1.12.x is released and baked into the
-# ruby:2.3 docker image.
-RUN gem install bundler -v 1.12.0.rc.4
-
 RUN  \
     echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections && \
     echo 'mysql-server mysql-server/root_password_again password password' | debconf-set-selections && \
