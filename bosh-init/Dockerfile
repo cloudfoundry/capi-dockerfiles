@@ -16,7 +16,8 @@ RUN set -ex \
           libyaml-dev \
           libsqlite3-dev \
           sqlite3 \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN set -ex \
     && curl -fSL -o /usr/local/bin/bosh-init \
