@@ -12,6 +12,7 @@ docker login
 
 ```
 cd ~/workspace/capi-dockerfiles/capi-go-units
-docker build -t cloudfoundry/capi-go-units .
+docker build -t $(cat repository) .
+docker push $(cat repository)
 ```
 
