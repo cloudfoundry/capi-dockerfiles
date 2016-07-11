@@ -17,7 +17,7 @@ RUN set -ex \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN set -ex \
-  && pip install awscli==1.6.6
+  && pip install awscli
 
 RUN set -ex \
   && apt-get update \
