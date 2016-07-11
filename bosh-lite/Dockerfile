@@ -43,3 +43,8 @@ RUN set -ex \
   && gem update --system \
   && gem install bundler --no-rdoc --no-ri \
   && gem install bosh_cli --version 1.3215.0 --no-rdoc --no-ri
+
+RUN set -ex \
+  && wget https://github.com/cloudfoundry-incubator/spiff/releases/download/v1.0.7/spiff_linux_amd64 \
+    -O /usr/bin/spiff \
+  && chmod 0755 /usr/bin/spiff
