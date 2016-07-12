@@ -5,6 +5,7 @@ RUN set -ex \
   && apt-get -y install \
     wget \
     curl \
+    dnsutils \
     python-software-properties \
     python-pip \
     jq \
