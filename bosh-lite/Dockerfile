@@ -4,6 +4,7 @@ RUN set -ex \
   && apt-get update \
   && apt-get -y install \
     wget \
+    curl \
     python-software-properties \
     python-pip \
     jq \
