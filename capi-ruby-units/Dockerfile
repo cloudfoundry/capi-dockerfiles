@@ -21,6 +21,16 @@ RUN set -ex \
     && createdb -U postgres cc_test \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV GOPATH $HOME/go
+ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
+RUN \
+  wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz -P /tmp && \
+  tar xzvf /tmp/go1.6.2.linux-amd64.tar.gz -C /usr/local && \
+  mkdir $GOPATH && \
+  rm -rf /tmp/*
+
+RUN go get github.com/nats-io/gnatsd
+
 RUN set -ex \
     && apt-get update \
     && apt-get -y install \
