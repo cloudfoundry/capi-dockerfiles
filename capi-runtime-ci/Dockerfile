@@ -97,6 +97,8 @@ RUN \
   cp /tmp/go/src/github.com/cloudfoundry-incubator/spiff/spiff /usr/local/bin && \
   rm -rf /tmp/*
 
+RUN go get github.com/nats-io/gnatsd
+
 RUN \
   wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb -P /tmp && \
   dpkg --install /tmp/vagrant_1.8.1_x86_64.deb && \
