@@ -1,21 +1,15 @@
 FROM ruby:2.3
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
-RUN set -ex \
-    && apt-get update \
-    && apt-get install -y \
-          build-essential \
-          zlibc \
-          zlib1g-dev \
-          openssl \
-          libxslt-dev \
-          libxml2-dev \
-          libssl-dev \
-          libreadline6 \
-          libreadline6-dev \
-          libyaml-dev \
-          libsqlite3-dev \
-          sqlite3 \
+RUN \
+  apt-get update && \
+  apt-get -y install \
+    build-essential \
+    curl \
+    jq \
+    mercurial \
+    software-properties-common \
+    wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
