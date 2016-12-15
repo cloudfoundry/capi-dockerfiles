@@ -7,6 +7,8 @@ RUN set -ex \
         git \
         libcurl4-openssl-dev \
         libssl-dev \
+        python-dev \
+        python3-dev \
         python-software-properties \
         software-properties-common \
         python-pip \
