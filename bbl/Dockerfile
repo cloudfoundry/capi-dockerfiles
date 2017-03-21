@@ -18,6 +18,6 @@ RUN set -ex \
         "https://s3.amazonaws.com/bosh-init-artifacts/bosh-init-0.0.92-linux-amd64" \
     && chmod 0755 /usr/local/bin/bosh-init
 
-RUN wget "$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/releases | jq -r .[0].assets[].browser_download_url | grep _linux)" && \
+RUN wget "$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/releases | jq -r map(select((.prerelease == false) and (.draft == false) and (.tag_name|startswith("v2"))))[0].assets[].browser_download_url | grep _linux)" && \
   mv bbl-* /usr/local/bin/bbl && \
   chmod +x /usr/local/bin/bbl
