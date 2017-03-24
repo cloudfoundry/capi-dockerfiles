@@ -11,6 +11,8 @@ RUN set -ex \
            mysql-server \
            postgresql-contrib \
            postgresql \
+           apt-transport-https \
+           software-properties-common \
     && apt-get clean \
     && chmod 755 /var/lib/mysql \
     && sed -i 's/peer/trust/' "$(find /etc/postgresql -name pg_hba.conf)" \
@@ -20,6 +22,22 @@ RUN set -ex \
     && echo 'CREATE DATABASE cc_test;' | mysql -u root -ppassword \
     && createdb -U postgres cc_test \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install MS SQL CLI
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+  apt-get install nodejs && \
+  npm install -g sql-cli
+
+# Install docker in order to run nested MS SQL docker image
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+  apt-key fingerprint 0EBFCD88 && \
+  add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/debian \
+     $(lsb_release -cs) \
+     stable" && \
+  apt-get update && \
+  apt-get -y install docker-ce && \
+  apt-get clean
 
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
