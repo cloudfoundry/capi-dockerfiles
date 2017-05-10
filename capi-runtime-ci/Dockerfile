@@ -98,6 +98,7 @@ RUN \
   rm -rf /tmp/*
 
 RUN go get github.com/nats-io/gnatsd
+RUN go get github.com/square/certstrap
 
 RUN \
   wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb -P /tmp && \
