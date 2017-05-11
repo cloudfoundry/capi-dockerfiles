@@ -11,6 +11,7 @@ RUN \
     software-properties-common \
     wget \
     apt-transport-https \
+    unzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -22,6 +23,10 @@ RUN set -ex \
 RUN wget "$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/releases | jq -r 'map(select((.prerelease == false) and (.draft == false) and (.tag_name|startswith("v3"))))[0].assets[].browser_download_url' | grep _linux)" && \
   mv bbl-* /usr/local/bin/bbl && \
   chmod +x /usr/local/bin/bbl
+
+RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.5/terraform_0.9.5_linux_amd64.zip && \
+  unzip /tmp/terraform.zip -d /usr/local/bin/ && \
+  rm /tmp/terraform.zip
 
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
