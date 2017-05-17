@@ -7,6 +7,7 @@ RUN apt-get update && \
     unzip \
     tsocks \
     lsof \
+    jq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
