@@ -5,11 +5,19 @@ RUN apt-get update && \
     build-essential \
     wget \
     unzip \
-    tsocks \
     lsof \
     jq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN wget -O /tmp/tsocks.zip https://github.com/NNemec/tsocks/archive/master.zip && \
+  unzip /tmp/tsocks.zip -d /tmp/ && \
+  cd /tmp/tsocks-master && \
+  autoconf && \
+  autoheader && \
+  ./configure --libdir=/lib && \
+  make install && \
+  rm -rf /tmp/*
 
 # Socks Proxy tunnels should be opened on port 8080
 RUN printf 'server = 127.0.0.1\n\
