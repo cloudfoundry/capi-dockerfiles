@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk update && \
     apk --no-cache add \
-    ca-certificates wget bash tar \
+    ca-certificates wget bash tar util-linux \
     python \
     # needed to render bosh templates
     ruby ruby-dev \
