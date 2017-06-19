@@ -20,11 +20,11 @@ RUN set -ex \
         "https://s3.amazonaws.com/bosh-init-artifacts/bosh-init-0.0.92-linux-amd64" \
     && chmod 0755 /usr/local/bin/bosh-init
 
-RUN wget "$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/releases | jq -r 'map(select((.prerelease == false) and (.draft == false) and (.tag_name|startswith("v3"))))[0].assets[].browser_download_url' | grep _linux)" && \
+RUN wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v3.2.3/bbl-v3.2.3_linux_x86-64 && \
   mv bbl-* /usr/local/bin/bbl && \
   chmod +x /usr/local/bin/bbl
 
-RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.8/terraform_0.9.8_linux_amd64.zip && \
+RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.6/terraform_0.9.6_linux_amd64.zip && \
   unzip /tmp/terraform.zip -d /usr/local/bin/ && \
   rm /tmp/terraform.zip
 
