@@ -24,7 +24,7 @@ RUN wget "$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/re
   mv bbl-* /usr/local/bin/bbl && \
   chmod +x /usr/local/bin/bbl
 
-RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.5/terraform_0.9.5_linux_amd64.zip && \
+RUN wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.9.8/terraform_0.9.8_linux_amd64.zip && \
   unzip /tmp/terraform.zip -d /usr/local/bin/ && \
   rm /tmp/terraform.zip
 
