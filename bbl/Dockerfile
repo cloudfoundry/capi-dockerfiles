@@ -1,5 +1,7 @@
 FROM relintdockerhubpushbot/cf-deployment-concourse-tasks:v2.2.0
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
+# The FROM should match the repo and tag in this file:
+#   https://github.com/cloudfoundry/cf-deployment-concourse-tasks/blob/master/bbl-up/task.yml
 
 RUN \
   apt-get -y install \
