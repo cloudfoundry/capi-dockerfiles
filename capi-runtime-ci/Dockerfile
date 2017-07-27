@@ -119,3 +119,9 @@ RUN \
   mv /tmp/bosh-init-0.0.70-linux-amd64 /usr/local/bin/bosh-init && \
   chmod +x /usr/local/bin/bosh-init && \
   rm -rf /tmp/*
+
+RUN \
+  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64 -P /tmp && \
+  mv /tmp/bosh-cli-2.0.28-linux-amd64 /usr/local/bin/bosh2 && \
+  chmod +x /usr/local/bin/bosh2 && \
+  rm -rf /tmp/*
