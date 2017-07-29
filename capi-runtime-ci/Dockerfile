@@ -83,9 +83,6 @@ RUN \
   bash -l -c "gem install bundler --no-rdoc --no-ri" && \
   bash -l -c "gem install bosh_cli --version 1.3262.0 --no-rdoc --no-ri"
 
-# Alias old bash to "bosh1"
-RUN mv /usr/bin/bosh /usr/bin/bosh1
-
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
 RUN \
@@ -122,6 +119,9 @@ RUN \
   mv /tmp/bosh-init-0.0.70-linux-amd64 /usr/local/bin/bosh-init && \
   chmod +x /usr/local/bin/bosh-init && \
   rm -rf /tmp/*
+
+# Alias old bash to "bosh1"
+RUN mv /opt/rubies/ruby-2.3.3/bin/bosh /usr/bin/bosh1
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
