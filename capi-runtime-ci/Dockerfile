@@ -80,8 +80,7 @@ RUN \
   bash -l -c "pip install awscli==1.6.6" && \
   bash -l -c "pip install s3cmd" && \
   bash -l -c "gem update --system" && \
-  bash -l -c "gem install bundler --no-rdoc --no-ri" && \
-  bash -l -c "gem install bosh_cli --version 1.3262.0 --no-rdoc --no-ri"
+  bash -l -c "gem install bundler --no-rdoc --no-ri"
 
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
@@ -119,9 +118,6 @@ RUN \
   mv /tmp/bosh-init-0.0.70-linux-amd64 /usr/local/bin/bosh-init && \
   chmod +x /usr/local/bin/bosh-init && \
   rm -rf /tmp/*
-
-# Alias old bash to "bosh1"
-RUN mv /opt/rubies/ruby-2.3.3/bin/bosh /usr/bin/bosh1
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
