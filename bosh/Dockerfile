@@ -9,5 +9,5 @@ RUN apk update && \
 
 RUN gem install json --no-rdoc --no-ri # json is not a default gem in alpine
 
-RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.16-linux-amd64
+RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.30-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
