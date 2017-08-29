@@ -3,7 +3,7 @@ MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN set -ex \
     && apt-get update \
-    && apt-get install \
+    && apt-get -y install \
         unzip \
         lsb-release \
     && apt-get clean \
