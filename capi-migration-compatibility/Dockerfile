@@ -1,4 +1,4 @@
-FROM ruby:2.3.4
+FROM ruby:2.4
 
 RUN apt-get update && \
     apt-get -y install \

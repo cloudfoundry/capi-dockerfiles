@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.4
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN gem install bundler
