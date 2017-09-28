@@ -1,7 +1,7 @@
 FROM golang:1.9-alpine
 
 RUN apk --no-cache add \
-    ca-certificates wget bash git make jq \
+    ca-certificates wget bash git make jq curl \
     python py-pip \
     iptables openssh-client \
     glide
