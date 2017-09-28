@@ -22,9 +22,7 @@ RUN mkdir -p src/github.com/cloudfoundry-incubator/ && \
   rm -rf src/github.com/cloudfoundry-incubator/bosh-backup-and-restore
 
 # Install CF CLI
-# Currently pinned to 6.31.0 to avoid a race condition in DRATs:
-# https://github.com/cloudfoundry-incubator/disaster-recovery-acceptance-tests/issues/3
-RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.31.0&source=github-rel' 2>&1 && \
+RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.32.0&source=github-rel' 2>&1 && \
   tar xf /tmp/cf.tgz cf && \
   mv ./cf /usr/local/bin/ && \
   rm /tmp/cf.tgz
