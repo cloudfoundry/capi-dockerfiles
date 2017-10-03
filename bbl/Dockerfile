@@ -24,3 +24,9 @@ RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -
   apt-get update && \
   apt-get -y install google-cloud-sdk && \
   apt-get clean
+
+RUN \
+  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v4.10.3/bbl-v4.10.3_linux_x86-64 -P /tmp && \
+  mv /tmp/bbl-* /usr/local/bin/bbl && \
+  cd /usr/local/bin && \
+  chmod +x bbl
