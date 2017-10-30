@@ -30,3 +30,6 @@ RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binar
 # Install BOSH CLI
 RUN wget -O /usr/local/bin/bosh 'https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.40-linux-amd64' 2>&1 && \
   chmod +x /usr/local/bin/bosh
+
+RUN wget -O /usr/local/bin/dep 'https://github.com/golang/dep/releases/download/v0.3.2/dep-linux-amd64' 2>&1 && \
+  chmod +x /usr/local/bin/dep
