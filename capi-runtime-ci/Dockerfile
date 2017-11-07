@@ -80,6 +80,7 @@ RUN \
   bash -l -c "pip install awscli==1.6.6" && \
   bash -l -c "pip install s3cmd" && \
   bash -l -c "gem update --system" && \
+  bash -l -c "rm -r /opt/rubies/ruby-2.4.2/bin/bundle" && \
   bash -l -c "gem install bundler --no-rdoc --no-ri"
 
 ENV GOPATH $HOME/go
