@@ -20,7 +20,9 @@ RUN gem install json --no-rdoc --no-ri # json is not a default gem in alpine
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.1-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
 
-RUN wget -O /tmp/google-sdk.tgz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-152.0.0-linux-x86_64.tar.gz && \
+# Every once in a while, you'll see "Updates are available for some Cloud SDK components."
+# You can find the latest downloads at https://cloud.google.com/sdk/downloads
+RUN wget -O /tmp/google-sdk.tgz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-180.0.1-linux-x86_64.tar.gz && \
   tar xvf /tmp/google-sdk.tgz -C $HOME && \
   rm /tmp/google-sdk.tgz
 
