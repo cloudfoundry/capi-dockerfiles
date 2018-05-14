@@ -7,6 +7,7 @@ RUN apt-get update && \
     xz-utils \
     lsof \
     jq \
+    vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -18,5 +19,13 @@ RUN wget -O /tmp/proxychains.tar.xz https://github.com/rofl0r/proxychains-ng/rel
   make install && \
   rm -rf /tmp/*
 
-RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.16-linux-amd64 && \
-    chmod +x /usr/local/bin/bosh
+RUN \
+  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64 --output-document="/usr/bin/bosh" && \
+  chmod +x /usr/bin/bosh
+
+# Install bbl
+RUN \
+  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v6.6.7/bbl-v6.6.7_linux_x86-64 -P /tmp && \
+  mv /tmp/bbl-* /usr/local/bin/bbl && \
+  cd /usr/local/bin && \
+  chmod +x bbl
