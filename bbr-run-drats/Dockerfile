@@ -1,12 +1,16 @@
-FROM golang:1.9-alpine
+FROM cloudfoundrylondon/backup-and-restore-minimal
 
-RUN apk --no-cache add \
-    ca-certificates wget bash git make jq curl \
-    python py-pip \
-    iptables openssh-client \
-    glide
-
-RUN pip install sshuttle
+RUN apt-get update && \
+    apt-get -y install \
+    build-essential \
+    wget \
+    xz-utils \
+    lsof \
+    jq \
+    vim \
+    netcat-openbsd \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /go
 
@@ -16,13 +20,6 @@ RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binar
   mv ./cf /usr/local/bin/ && \
   rm /tmp/cf.tgz
 
-# Install BOSH CLI
-RUN wget -O /usr/local/bin/bosh 'https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.40-linux-amd64' 2>&1 && \
-  chmod +x /usr/local/bin/bosh
-
-RUN wget -O /usr/local/bin/dep 'https://github.com/golang/dep/releases/download/v0.3.2/dep-linux-amd64' 2>&1 && \
-  chmod +x /usr/local/bin/dep
-
 # Install bbl
 RUN \
   wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v6.6.7/bbl-v6.6.7_linux_x86-64 -P /tmp && \
@@ -30,7 +27,6 @@ RUN \
   cd /usr/local/bin && \
   chmod +x bbl
 
-# Install proxychains
 RUN wget -O /tmp/proxychains.tar.xz https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz && \
   mkdir /tmp/proxychains && \
   tar xf /tmp/proxychains.tar.xz -C /tmp/proxychains --strip-components=1 && \
