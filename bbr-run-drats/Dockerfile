@@ -29,3 +29,12 @@ RUN \
   mv /tmp/bbl-* /usr/local/bin/bbl && \
   cd /usr/local/bin && \
   chmod +x bbl
+
+# Install proxychains
+RUN wget -O /tmp/proxychains.tar.xz https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz && \
+  mkdir /tmp/proxychains && \
+  tar xf /tmp/proxychains.tar.xz -C /tmp/proxychains --strip-components=1 && \
+  cd /tmp/proxychains && \
+  ./configure --prefix=/usr --sysconfdir=/etc && \
+  make install && \
+  rm -rf /tmp/*
