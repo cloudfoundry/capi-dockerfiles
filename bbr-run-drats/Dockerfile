@@ -27,9 +27,8 @@ RUN \
   cd /usr/local/bin && \
   chmod +x bbl
 
-# Install BOSH CLI
-RUN wget -O /usr/local/bin/bosh 'https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.40-linux-amd64' 2>&1 && \
-  chmod +x /usr/local/bin/bosh
+# Symlink BBR bosh-cli to bosh
+RUN ln -s /usr/bin/bosh-cli /usr/local/bin/bosh
 
 # Install Proxychains
 RUN wget -O /tmp/proxychains.tar.xz https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz && \
