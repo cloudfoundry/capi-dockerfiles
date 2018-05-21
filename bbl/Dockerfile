@@ -8,14 +8,6 @@ RUN \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV GOPATH $HOME/go
-ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
-RUN \
-  wget https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz -P /tmp && \
-  tar xzvf /tmp/go1.9.linux-amd64.tar.gz -C /usr/local && \
-  mkdir -p $GOPATH && \
-  rm -rf /tmp/*
-
 RUN go get github.com/square/certstrap
 
 RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" >> \
