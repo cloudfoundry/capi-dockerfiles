@@ -6,16 +6,13 @@ RUN \
   echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> $HOME/.bash_profile
 
 RUN \
-  echo "deb http://apt.gemnasium.com stable main" > /etc/apt/sources.list.d/gemnasium.list && \
   echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" > /etc/apt/sources.list.d/backports.list && \
-  apt-key adv --recv-keys --keyserver keyserver.ubuntu.com E5CEAB0AC5F1CA2A && \
   apt-get update && \
   apt-get -y install \
     bison \
     build-essential \
     curl \
     debconf-utils \
-    gemnasium-toolbelt \
     jq/trusty-backports \
     libcurl4-openssl-dev \
     libmysqlclient-dev \
