@@ -9,7 +9,6 @@ RUN set -ex \
         libssl-dev \
         python-dev \
         python3-dev \
-        python-software-properties \
         software-properties-common \
         python-pip \
     && bash -l -c "pip install awscli" \
