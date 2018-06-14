@@ -2,6 +2,7 @@ FROM relintdockerhubpushbot/cf-deployment-concourse-tasks
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN \
+  apt-get update && \
   apt-get -y install \
     mercurial \
     apt-transport-https \
