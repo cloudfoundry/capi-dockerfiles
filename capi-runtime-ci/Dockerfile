@@ -93,7 +93,6 @@ RUN \
   cp /tmp/go/src/github.com/cloudfoundry-incubator/spiff/spiff /usr/local/bin && \
   rm -rf /tmp/*
 
-RUN go get github.com/nats-io/gnatsd
 RUN go get github.com/square/certstrap
 
 RUN \

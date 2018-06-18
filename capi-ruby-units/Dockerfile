@@ -47,8 +47,6 @@ RUN \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
-RUN go get github.com/nats-io/gnatsd
-
 RUN set -ex \
     && apt-get update \
     && apt-get -y install \
