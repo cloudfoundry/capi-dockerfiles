@@ -22,9 +22,9 @@ RUN chmod +x /usr/local/bin/bosh
 
 # Every once in a while, you'll see "Updates are available for some Cloud SDK components."
 # You can find the latest downloads at https://cloud.google.com/sdk/downloads
-RUN wget -O /tmp/google-sdk.tgz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-180.0.1-linux-x86_64.tar.gz && \
-  tar xvf /tmp/google-sdk.tgz -C $HOME && \
-  rm /tmp/google-sdk.tgz
+RUN wget -O /tmp/google-sdk.zip https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && \
+  unzip /tmp/google-sdk.zip -d $HOME && \
+  rm /tmp/google-sdk.zip
 
 RUN ln -s $HOME/google-cloud-sdk/bin/gcloud /usr/local/bin/
 RUN ln -s $HOME/google-cloud-sdk/bin/gsutil /usr/local/bin/
