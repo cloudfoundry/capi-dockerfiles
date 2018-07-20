@@ -15,7 +15,7 @@ RUN apt-get update && \
 WORKDIR /go
 
 # Install CF CLI
-RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.32.0&source=github-rel' 2>&1 && \
+RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&source=github-rel' 2>&1 && \
   tar xf /tmp/cf.tgz cf && \
   mv ./cf /usr/local/bin/ && \
   rm /tmp/cf.tgz
