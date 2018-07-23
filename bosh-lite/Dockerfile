@@ -26,5 +26,9 @@ RUN wget -O /tmp/google-sdk.zip https://dl.google.com/dl/cloudsdk/channels/rapid
   unzip /tmp/google-sdk.zip -d $HOME && \
   rm /tmp/google-sdk.zip
 
+RUN $HOME/google-cloud-sdk/install.sh \
+      --usage-reporting=false \
+      --additional-components gsutil
+
 RUN ln -s $HOME/google-cloud-sdk/bin/gcloud /usr/local/bin/
 RUN ln -s $HOME/google-cloud-sdk/bin/gsutil /usr/local/bin/
