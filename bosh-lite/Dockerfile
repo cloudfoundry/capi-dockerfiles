@@ -17,7 +17,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/
 
 RUN gem install json --no-rdoc --no-ri # json is not a default gem in alpine
 
-RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.1-linux-amd64
+RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.0.1-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
 
 # Every once in a while, you'll see "Updates are available for some Cloud SDK components."
