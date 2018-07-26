@@ -21,7 +21,7 @@ RUN wget -O /tmp/proxychains.tar.xz https://github.com/rofl0r/proxychains-ng/rel
   rm -rf /tmp/*
 
 RUN \
-  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64 --output-document="/usr/bin/bosh" && \
+  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.0.1-linux-amd64 --output-document="/usr/bin/bosh" && \
   chmod +x /usr/bin/bosh
 
 # Install bbl
