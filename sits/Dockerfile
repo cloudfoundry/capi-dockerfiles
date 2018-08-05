@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-ENV bosh_cli_version 3.0.1
+ENV bosh_cli_version 5.0.1
 
 RUN \
   echo "****** This is my working directory ******" && \

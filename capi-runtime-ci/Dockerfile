@@ -1,5 +1,7 @@
 FROM ubuntu:trusty
 
+ENV bosh_cli_version 5.0.1
+
 ENV HOME /root
 RUN \
   echo '' > $HOME/.bashrc && \
@@ -115,5 +117,5 @@ RUN \
   chmod +x /usr/local/bin/bosh-init && \
   rm -rf /tmp/*
 
-RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.0.1-linux-amd64
+RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
