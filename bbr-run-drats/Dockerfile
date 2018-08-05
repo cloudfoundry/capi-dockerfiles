@@ -1,5 +1,7 @@
 FROM cloudfoundrylondon/backup-and-restore-minimal
 
+ENV bbl_version 6.6.7
+
 RUN apt-get update && \
     apt-get -y install \
     build-essential \
@@ -22,7 +24,7 @@ RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binar
 
 # Install bbl
 RUN \
-  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v6.6.7/bbl-v6.6.7_linux_x86-64 -P /tmp && \
+  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64 -P /tmp && \
   mv /tmp/bbl-* /usr/local/bin/bbl && \
   cd /usr/local/bin && \
   chmod +x bbl
