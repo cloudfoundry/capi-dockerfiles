@@ -2,6 +2,7 @@ FROM ubuntu:trusty
 
 ENV bosh_cli_version 5.1.1
 ENV bbl_version 6.6.7
+ENV credhub_cli_version 1.7.7
 
 RUN \
   echo "****** This is my working directory ******" && \
@@ -60,3 +61,9 @@ RUN \
 RUN \
   wget -q -O cf.deb "https://cli.run.pivotal.io/stable?release=debian64&version=6.23.1&source=github-rel" && \
   dpkg -i cf.deb
+
+# credhub-cli
+RUN \
+  wget https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${credhub_cli_version}/credhub-linux-${credhub_cli_version}.tgz -P /tmp && \
+  tar xzvf /tmp/credhub-linux-${credhub_cli_version}.tgz -C /usr/local/bin && \
+  chmod +x /usr/local/bin/credhub
