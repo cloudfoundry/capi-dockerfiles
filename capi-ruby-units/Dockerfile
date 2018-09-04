@@ -28,6 +28,9 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
   apt-get install nodejs && \
   npm install -g sql-cli
 
+# Install Snyk
+npm install -g snyk
+
 # Install docker in order to run nested MS SQL docker image
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
   apt-key fingerprint 0EBFCD88 && \
