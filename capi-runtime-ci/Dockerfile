@@ -89,19 +89,7 @@ RUN \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
-RUN \
-  git clone https://github.com/cloudfoundry-incubator/spiff.git /tmp/go/src/github.com/cloudfoundry-incubator/spiff && \
-  GOPATH=/tmp/go /tmp/go/src/github.com/cloudfoundry-incubator/spiff/scripts/build && \
-  cp /tmp/go/src/github.com/cloudfoundry-incubator/spiff/spiff /usr/local/bin && \
-  rm -rf /tmp/*
-
 RUN go get github.com/square/certstrap
-
-RUN \
-  wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb -P /tmp && \
-  dpkg --install /tmp/vagrant_1.8.1_x86_64.deb && \
-  vagrant plugin install vagrant-aws && \
-  rm -rf /tmp/*
 
 RUN \
   wget \
