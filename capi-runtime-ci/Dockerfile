@@ -56,5 +56,9 @@ RUN \
   echo 'chruby 2.4.2' >> $HOME/.bashrc && \
   rm -rf /tmp/*
 
+RUN \
+  bash -l -c "gem update --system" && \
+  bash -l -c "gem install bundler --no-rdoc --no-ri --force"
+-
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
