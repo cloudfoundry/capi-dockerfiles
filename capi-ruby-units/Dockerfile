@@ -66,3 +66,13 @@ RUN set -ex \
     && rm Gemfile \
     && rm Gemfile.lock \
     && rm -rf /tmp/* /var/tmp/*
+
+# Install protobuf
+RUN set -ex \
+    && wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip -O protoc.zip \
+    && unzip -o protoc.zip \
+    && mv include/google /usr/local/include \
+    && mv bin/protoc /usr/local/bin \
+    && rm -f protoc.zip
+
+RUN gem install protobuf
