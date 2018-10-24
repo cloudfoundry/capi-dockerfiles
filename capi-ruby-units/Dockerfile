@@ -76,3 +76,6 @@ RUN set -ex \
     && rm -f protoc.zip
 
 RUN gem install protobuf
+# moneky patch so that ruby protobuf works with verison 2 (see bbs https://github.com/cloudfoundry/bbs#generating-ruby-models-for-bbs-models)
+RUN set -ex \
+    && cp $(which protoc-gen-ruby) $(which protoc-gen-ruby)2
