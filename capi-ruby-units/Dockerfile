@@ -75,7 +75,10 @@ RUN set -ex \
     && mv bin/protoc /usr/local/bin \
     && rm -f protoc.zip
 
-RUN gem install protobuf
-# moneky patch so that ruby protobuf works with verison 2 (see bbs https://github.com/cloudfoundry/bbs#generating-ruby-models-for-bbs-models)
+RUN gem install protobuf -n /usr/local/bin
+
+# protoc supports ruby natively, but only proto3, 
+# We need to create a 'new" language (called ruby2) that uses the ruby protobuff gem
+# instead of the native protoc ruby copmiler (see bbs https://github.com/cloudfoundry/bbs#generating-ruby-models-for-bbs-models)
 RUN set -ex \
-    && cp $(which protoc-gen-ruby) $(which protoc-gen-ruby)2
+    && cp /usr/local/bin/protoc-gen-ruby /usr/local/bin/protoc-gen-ruby2
