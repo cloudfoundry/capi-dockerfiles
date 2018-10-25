@@ -74,11 +74,3 @@ RUN set -ex \
     && mv include/google /usr/local/include \
     && mv bin/protoc /usr/local/bin \
     && rm -f protoc.zip
-
-RUN gem install protobuf -n /usr/local/bin
-
-# protoc supports ruby natively, but only proto3, 
-# We need to create a 'new" language (called ruby2) that uses the ruby protobuff gem
-# instead of the native protoc ruby copmiler (see bbs https://github.com/cloudfoundry/bbs#generating-ruby-models-for-bbs-models)
-RUN set -ex \
-    && cp /usr/local/bin/protoc-gen-ruby /usr/local/bin/protoc-gen-ruby2
