@@ -1,7 +1,7 @@
 FROM ruby:2.4
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
-RUN gem install bundler
+RUN gem install bundler -v 1.17.3
 
 RUN set -ex \
     && echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections \
