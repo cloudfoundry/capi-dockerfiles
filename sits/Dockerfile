@@ -3,6 +3,7 @@ FROM ubuntu:trusty
 ENV bosh_cli_version 5.4.0
 ENV bbl_version 6.6.7
 ENV credhub_cli_version 1.7.7
+ENV go_version 1.11.4
 
 RUN \
   echo "****** This is my working directory ******" && \
@@ -34,8 +35,8 @@ RUN \
 ENV GOPATH /go
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
 RUN \
-  wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz -P /tmp && \
-  tar xzvf /tmp/go1.7.4.linux-amd64.tar.gz -C /usr/local && \
+  wget https://storage.googleapis.com/golang/go${go_version}.linux-amd64.tar.gz -P /tmp && \
+  tar xzvf /tmp/go${go_version}.linux-amd64.tar.gz -C /usr/local && \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
@@ -59,7 +60,7 @@ RUN \
 
 # Install the cf CLI
 RUN \
-  wget -q -O cf.deb "https://cli.run.pivotal.io/stable?release=debian64&version=6.23.1&source=github-rel" && \
+  wget -q -O cf.deb "https://cli.run.pivotal.io/stable?release=debian64&source=github-rel" && \
   dpkg -i cf.deb
 
 # credhub-cli
