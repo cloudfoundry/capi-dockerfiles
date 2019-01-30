@@ -20,6 +20,11 @@ RUN apt-get update && \
 
 WORKDIR /go
 
+RUN cp /usr/bin/bbl /usr/bin/bbl-what
+
+RUN wget -q -O /usr/bin/bbl 'https://github.com/cloudfoundry/bosh-bootloader/releases/download/v7.0.13/bbl-v7.0.13_linux_x86-64' && \
+    chmod +x /usr/bin/bbl
+
 # Install CF CLI
 RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&source=github-rel' 2>&1 && \
   tar xf /tmp/cf.tgz cf && \
