@@ -24,7 +24,7 @@ WORKDIR /go
 
 RUN cp /usr/bin/bbl /usr/bin/bbl-what
 
-RUN wget -q -O /usr/bin/bbl 'https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64' && \
+RUN wget -q -O /usr/bin/bbl https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64 && \
     chmod +x /usr/bin/bbl
 
 # Install CF CLI
