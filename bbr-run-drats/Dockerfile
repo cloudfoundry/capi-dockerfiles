@@ -1,5 +1,7 @@
 FROM cloudfoundrylondon/backup-and-restore-minimal
 
+ENV bbl_version 6.6.7
+
 RUN wget -q -O - https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add -  && \
     echo "deb http://apt.starkandwayne.com stable main" | tee /etc/apt/sources.list.d/starkandwayne.list  && \
     apt-get update
@@ -22,7 +24,7 @@ WORKDIR /go
 
 RUN cp /usr/bin/bbl /usr/bin/bbl-what
 
-RUN wget -q -O /usr/bin/bbl 'https://github.com/cloudfoundry/bosh-bootloader/releases/download/v7.0.13/bbl-v7.0.13_linux_x86-64' && \
+RUN wget -q -O /usr/bin/bbl 'https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64' && \
     chmod +x /usr/bin/bbl
 
 # Install CF CLI
