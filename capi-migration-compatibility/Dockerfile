@@ -1,6 +1,6 @@
 FROM ruby:2.4
 
-ENV bosh_cli_version 5.4.0
+ENV bosh_cli_version 5.5.0
 ENV bbl_version 7.2.12
 
 RUN apt-get update && \
