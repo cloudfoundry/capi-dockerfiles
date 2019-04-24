@@ -10,7 +10,7 @@ RUN \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pip install yq
+RUN pip3 install yq
 RUN go get github.com/square/certstrap
 
 RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" >> \
