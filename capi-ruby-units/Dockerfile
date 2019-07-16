@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.5-stretch
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN gem install bundler -v 1.17.3
@@ -8,7 +8,7 @@ RUN set -ex \
     && echo 'mysql-server mysql-server/root_password_again password password' | debconf-set-selections \
     && apt-get update \
     && apt-get -y install \
-           mysql-server \
+           default-mysql-server \
            postgresql-contrib \
            postgresql \
            apt-transport-https \
@@ -23,24 +23,10 @@ RUN set -ex \
     && createdb -U postgres cc_test \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install MS SQL CLI
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-  apt-get install nodejs && \
-  npm install -g sql-cli
-
 # Install Snyk
-RUN npm install -g snyk
-
-# Install docker in order to run nested MS SQL docker image
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
-  apt-key fingerprint 0EBFCD88 && \
-  add-apt-repository \
-     "deb [arch=amd64] https://download.docker.com/linux/debian \
-     $(lsb_release -cs) \
-     stable" && \
-  apt-get update && \
-  apt-get -y install docker-ce && \
-  apt-get clean
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+  apt-get -y install nodejs && \
+  npm install -g snyk
 
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
