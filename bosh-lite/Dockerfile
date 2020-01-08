@@ -17,7 +17,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
   apk add /tmp/glibc.apk && \
   rm -rf /tmp/glibc.apk
 
-RUN gem install json --no-rdoc --no-ri # json is not a default gem in alpine
+RUN gem install json --no-document # json is not a default gem in alpine
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
