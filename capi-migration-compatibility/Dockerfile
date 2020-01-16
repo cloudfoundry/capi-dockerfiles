@@ -1,6 +1,6 @@
 FROM ruby:2.5-stretch
 
-ENV bosh_cli_version 6.1.1
+ENV bosh_cli_version 6.2.0
 ENV bbl_version 7.2.12
 
 RUN apt-get update && \
