@@ -24,3 +24,9 @@ RUN pip3 install yq
 # https://github.com/golang/go/issues/28065
 ENV CGO_ENABLED=0
 ENV PATH $PATH:/root/google-cloud-sdk/bin
+
+RUN \
+  wget -O "cf-tar" "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=6.49.0" && \
+  tar xzvf cf-tar -C /usr/local/bin && \
+  chmod +x /usr/local/bin/cf && \
+  rm -rf cf-tar
