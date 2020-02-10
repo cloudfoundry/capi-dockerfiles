@@ -1,4 +1,6 @@
-FROM google/cloud-sdk:278.0.0-alpine
+FROM golang:alpine
+
+RUN apk add --no-cache bash curl python3
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
@@ -6,11 +8,7 @@ RUN curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.15.7
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
 
-ENV PATH $PATH:/usr/local/go/bin:/root/go/bin
-RUN wget https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.13.7.linux-amd64.tar.gz && \
-    rm -rf go1.13.7.linux-amd64.tar.gz && \
-    GO111MODULE="on" go get -v github.com/onsi/gomega/... && \
+RUN GO111MODULE="on" go get -v github.com/onsi/gomega/... && \
     GO111MODULE="on" go install -v github.com/onsi/ginkgo/ginkgo
 
 RUN apk add --no-cache openssl && \
@@ -21,9 +19,8 @@ RUN apk add --no-cache perl-utils && \
 
 RUN apk add --no-cache jq=1.6-r0
 
-RUN apk add --no-cache python3 && \
-    pip3 install yq
+RUN pip3 install yq
 
-RUN apk add --no-cache gcc && \
-    apk add --no-cache libc-dev && \
-    apk add --no-cache libc6-compat
+# https://github.com/golang/go/issues/28065
+ENV CGO_ENABLED=0
+ENV PATH $PATH:/root/google-cloud-sdk/bin
