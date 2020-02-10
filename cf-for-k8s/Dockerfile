@@ -23,3 +23,5 @@ RUN apk add --no-cache jq=1.6-r0
 
 RUN apk add --no-cache python3 && \
     pip3 install yq
+
+RUN apk add --no-cache gcc
