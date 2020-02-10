@@ -25,4 +25,5 @@ RUN apk add --no-cache python3 && \
     pip3 install yq
 
 RUN apk add --no-cache gcc && \
-    apk add --no-cache libc-dev
+    apk add --no-cache libc-dev && \
+    apk add --no-cache libc6-compat
