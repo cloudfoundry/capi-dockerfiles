@@ -25,6 +25,10 @@ RUN pip3 install yq
 ENV CGO_ENABLED=0
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 
+ENV bosh_cli_version 6.2.1
+RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
+RUN chmod +x /usr/local/bin/bosh
+
 RUN \
   wget -O "cf-tar" "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=6.49.0" && \
   tar xzvf cf-tar -C /usr/local/bin && \
