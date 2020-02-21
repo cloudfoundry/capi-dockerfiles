@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-RUN apk add --no-cache bash curl python3
+RUN apk add --no-cache bash curl python3 openssl perl-utils dnsutils jq=1.6-r0
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
@@ -11,13 +11,9 @@ RUN curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.15.7
 RUN GO111MODULE="on" go get -v github.com/onsi/gomega/... && \
     GO111MODULE="on" go install -v github.com/onsi/ginkgo/ginkgo
 
-RUN apk add --no-cache openssl && \
-    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-RUN apk add --no-cache perl-utils && \
-    wget -O- https://k14s.io/install.sh | bash
-
-RUN apk add --no-cache jq=1.6-r0
+RUN wget -O- https://k14s.io/install.sh | bash
 
 RUN pip3 install yq
 
