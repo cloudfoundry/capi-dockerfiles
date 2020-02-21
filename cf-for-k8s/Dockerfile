@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-RUN apk add --no-cache bash curl python3 openssl perl-utils dnsutils jq=1.6-r0
+RUN apk add --no-cache bash curl python3 openssl perl-utils bind-tools jq=1.6-r0
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
