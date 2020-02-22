@@ -30,3 +30,5 @@ RUN \
   tar xzvf cf-tar -C /usr/local/bin && \
   chmod +x /usr/local/bin/cf && \
   rm -rf cf-tar
+
+RUN cf install-plugin -r CF-Community "log-cache"
