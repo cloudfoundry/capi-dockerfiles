@@ -31,4 +31,5 @@ RUN \
   chmod +x /usr/local/bin/cf && \
   rm -rf cf-tar
 
-RUN cf install-plugin -r CF-Community "log-cache" -f
+# for some reason this doesn't work- it says the plugin binary is invalid
+# RUN cf install-plugin -r CF-Community "log-cache" -f
