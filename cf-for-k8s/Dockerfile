@@ -1,15 +1,12 @@
-FROM golang:alpine
+FROM relintdockerhubpushbot/cf-test-runner
 
-RUN apk add --no-cache git bash curl python3 openssl perl-utils bind-tools jq=1.6-r0
+RUN apt install git bash curl python3 openssl perl-utils bind-tools jq=1.6-r0
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
 RUN curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.15.7/bin/linux/amd64/kubectl && \
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
-
-RUN GO111MODULE="on" go get -v github.com/onsi/gomega/... && \
-    GO111MODULE="on" go install -v github.com/onsi/ginkgo/ginkgo
 
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
@@ -24,12 +21,3 @@ ENV PATH $PATH:/root/google-cloud-sdk/bin
 ENV bosh_cli_version 6.2.1
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
-
-RUN \
-  wget -O "cf-tar" "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=6.49.0" && \
-  tar xzvf cf-tar -C /usr/local/bin && \
-  chmod +x /usr/local/bin/cf && \
-  rm -rf cf-tar
-
-# for some reason this doesn't work- it says the plugin binary is invalid
-# RUN cf install-plugin -r CF-Community "log-cache" -f
