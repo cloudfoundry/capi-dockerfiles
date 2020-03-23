@@ -24,7 +24,7 @@ RUN set -ex \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Snyk
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
   apt-get -y install nodejs && \
   npm install -g snyk
 
