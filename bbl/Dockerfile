@@ -11,7 +11,9 @@ RUN \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip3 install yq
-RUN go get github.com/square/certstrap
+RUN wget https://github.com/square/certstrap/releases/download/v1.2.0/certstrap-1.2.0-linux-amd64 && \
+  mv certstrap-1.2.0-linux-amd64 /go/bin/certstrap && \
+  chmod u+x /go/bin/certstrap
 
 RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" >> \
   /etc/apt/sources.list.d/google-cloud-sdk.list && \
