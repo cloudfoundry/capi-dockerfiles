@@ -1,6 +1,9 @@
 FROM relintdockerhubpushbot/cf-test-runner
 
-RUN apt install -y git bash curl python3 python3-pip openssl dnsutils jq
+RUN apt-get update && \
+    apt install -y git bash curl python3 python3-pip openssl dnsutils jq && \
+    apt-get clean
+
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
 RUN curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v1.15.7/bin/linux/amd64/kubectl && \
