@@ -23,11 +23,6 @@ RUN set -ex \
     && createdb -U postgres cc_test \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Snyk
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-  apt-get -y install nodejs && \
-  npm install -g snyk
-
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
 RUN \
