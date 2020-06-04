@@ -5,7 +5,7 @@ ENV bosh_cli_version 6.2.1
 RUN apk update && \
     apk --no-cache add \
     ca-certificates wget bash tar util-linux \
-    python \
+    python3 \
     # needed to render bosh templates
     ruby ruby-dev \
     # needed to run Google CPI packaging scripts
