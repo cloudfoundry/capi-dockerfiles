@@ -20,7 +20,7 @@ ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 RUN pip3 install yq
 
-ENV bosh_cli_version 6.3.1
+ENV bosh_cli_version 6.4.0
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
 
