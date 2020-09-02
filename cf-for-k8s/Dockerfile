@@ -1,8 +1,16 @@
 FROM relintdockerhubpushbot/cf-test-runner
 
+RUN rm -f /usr/local/bin/cf
+RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key |\
+        apt-key add - && \
+    echo "deb https://packages.cloudfoundry.org/debian stable main" |\
+        tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+
 RUN apt-get update && \
-    apt install -y git bash curl python3 python3-pip openssl dnsutils jq && \
+    apt install -y git bash curl python3 python3-pip openssl dnsutils jq cf7-cli && \
     apt-get clean
+
+RUN ln -sf $(which cf7) /usr/local/bin/cf
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
