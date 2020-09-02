@@ -1,13 +1,17 @@
 FROM relintdockerhubpushbot/cf-test-runner
 
+
+RUN apt-get update && \
+    apt install -y git bash curl python3 python3-pip openssl dnsutils jq gnupg gnupg1 gnupg2
+
 RUN rm -f /usr/local/bin/cf
 RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key |\
         apt-key add - && \
     echo "deb https://packages.cloudfoundry.org/debian stable main" |\
         tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 
-RUN apt-get update && \
-    apt install -y git bash curl python3 python3-pip openssl dnsutils jq cf7-cli && \
+RUN apt-get update &&\
+    apt-get install cf7-cli &&\
     apt-get clean
 
 RUN ln -sf $(which cf7) /usr/local/bin/cf
