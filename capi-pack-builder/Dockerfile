@@ -20,7 +20,8 @@ RUN apt-get install -y --no-install-recommends docker-ce
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN curl -LO https://github.com/buildpacks/pack/releases/download/v0.10.0/pack-v0.10.0-linux.tgz
-RUN tar xvf pack-v0.10.0-linux.tgz
+ENV PACK_VERSION="v0.13.1"
+RUN curl -LO "https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-linux.tgz"
+RUN tar xvf "pack-${PACK_VERSION}-linux.tgz"
 RUN mv pack /usr/local/bin/pack
-RUN rm pack-v0.10.0-linux.tgz
+RUN rm "pack-${PACK_VERSION}-linux.tgz"
