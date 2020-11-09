@@ -37,3 +37,11 @@ RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh
 RUN chmod +x /usr/local/bin/bosh
 
 RUN cf install-plugin -f -r CF-Community "log-cache"
+
+ENV VELERO_VERSION v1.5.2
+RUN \
+  wget https://github.com/vmware-tanzu/velero/releases/download/${VELERO_VERSION}/velero-${VELERO_VERSION}-linux-amd64.tar.gz -P /tmp && \
+  tar xzvf /tmp/velero-${VELERO_VERSION}-linux-amd64.tar.gz -C /tmp/ && \
+  mv /tmp/velero-${VELERO_VERSION}-linux-amd64/velero /usr/local/bin/velero && \
+  chmod +x /usr/local/bin/velero && \
+  rm -rf /tmp/velero*
