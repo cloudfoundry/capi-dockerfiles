@@ -17,8 +17,8 @@ RUN set -ex \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN set -ex \
-    && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/master/docs/v3/Gemfile.lock \
-    && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/master/docs/v3/Gemfile \
+    && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile.lock \
+    && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile \
     && bundle install \
     && rm Gemfile \
     && rm Gemfile.lock \
