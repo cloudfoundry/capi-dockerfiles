@@ -1,4 +1,4 @@
-FROM ruby:2.5-stretch
+FROM ruby:2.7-buster
 
 ENV bosh_cli_version 6.4.1
 ENV bbl_version 7.2.12
