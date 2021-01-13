@@ -44,8 +44,8 @@ RUN \
   wget https://github.com/postmodern/ruby-install/archive/v0.4.1.tar.gz -P /tmp && \
   tar zxf /tmp/v0.4.1.tar.gz -C /tmp && \
   cd /tmp/ruby-install-0.4.1 && make install && \
-  ruby-install ruby 2.4.5 && \
-  rm -rf /usr/local/src/ruby-2.4.5 && \
+  ruby-install ruby 2.7.2 && \
+  rm -rf /usr/local/src/ruby-2.7.2 && \
   rm -rf /tmp/*
 
 RUN \
@@ -53,12 +53,12 @@ RUN \
   cd /tmp/chruby && git reset --hard 310bd34d1fcbb3365814c85018114123cef5a41f && \
   cd /tmp/chruby && ./scripts/setup.sh && \
   echo 'source /usr/local/share/chruby/chruby.sh' >> $HOME/.bashrc && \
-  echo 'chruby 2.4.5' >> $HOME/.bashrc && \
+  echo 'chruby 2.7.2' >> $HOME/.bashrc && \
   rm -rf /tmp/*
 
 RUN \
   bash -l -c "gem update --system" && \
-  bash -l -c "gem install bundler -v 1.17.3 --no-document --force"
+  bash -l -c "gem install bundler -v 2.2.4 --no-document --force"
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
