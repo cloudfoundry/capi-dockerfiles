@@ -58,7 +58,7 @@ RUN \
 
 RUN \
   bash -l -c "gem update --system" && \
-  bash -l -c "gem install bundler -v 2.2.4 --no-document --force"
+  bash -l -c "gem install bundler -v 2.1.4 --no-document --force"
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
