@@ -56,13 +56,12 @@ RUN \
   echo 'chruby 2.7.2' >> $HOME/.bashrc && \
   rm -rf /tmp/*
 
-# Remove current default versions of bundler as we want to use 2.1.4
-RUN rm /opt/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/specifications/default/bundler-*
-
 RUN \
   bash -l -c "gem update --system" && \
   bash -l -c "gem install bundler -v 2.1.4 --no-document --force"
 
+# Remove current default versions of bundler as we want to use 2.1.4
+RUN ls /opt/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/specifications/default/bundler-* | grep bundler-2.1.4 -v | xargs rm
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
