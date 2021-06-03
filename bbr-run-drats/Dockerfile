@@ -1,7 +1,6 @@
-FROM cloudfoundrylondon/backup-and-restore-minimal
+FROM pcfplatformrecovery/backup-and-restore-minimal
 
 ENV bbl_version 7.2.12
-ENV go_version 1.14.15
 
 RUN wget -q -O - https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add -  && \
     echo "deb http://apt.starkandwayne.com stable main" | tee /etc/apt/sources.list.d/starkandwayne.list  && \
