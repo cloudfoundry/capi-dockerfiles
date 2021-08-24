@@ -23,7 +23,7 @@ RUN service postgresql start && \
   psql -h localhost -Upostgres -c "CREATE USER locket WITH createrole superuser password 'locket_pw';"
 
 # kubebuilder for capi-k8s-release controllers
-RUN curl -L https://go.kubebuilder.io/dl/2.3.1/linux/amd64 | tar -xz -C /tmp/ && \
+RUN curl -L https://github.com/kubernetes-sigs/kubebuilder/releases/download/v2.3.1/kubebuilder_2.3.1_linux_amd64.tar.gz | tar -xz -C /tmp/ && \
     mv /tmp/kubebuilder_2.3.1_linux_amd64 /usr/local/kubebuilder
 
 ENV PATH $PATH:/usr/local/kubebuilder/bin
