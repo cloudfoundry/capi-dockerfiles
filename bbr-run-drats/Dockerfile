@@ -1,10 +1,14 @@
 FROM pcfplatformrecovery/backup-and-restore-minimal
 
-ENV bbl_version 7.2.12
+ENV BBL_CLI_ARCH linux
+ENV CREDHUB_CLI_ARCH linux
 
-RUN wget -q -O - https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add -  && \
-    echo "deb http://apt.starkandwayne.com stable main" | tee /etc/apt/sources.list.d/starkandwayne.list  && \
+# Install CF CLI
+RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add - && \
+    echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list && \
     apt-get update
+
+RUN apt-get -y remove cf7-cli
 
 RUN apt-get update && \
     apt-get -y install \
@@ -15,23 +19,21 @@ RUN apt-get update && \
     jq \
     vim \
     netcat-openbsd \
-    credhub-cli \
-    bosh-bootloader \
+    cf8-cli \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /go
 
-RUN cp /usr/bin/bbl /usr/bin/bbl-what
-
-RUN wget -q -O /usr/bin/bbl https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64 && \
+RUN BBL_LATEST=$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootloader/releases/latest  | \
+    jq -r ".assets[] | select(.name | test(\"${BBL_CLI_ARCH}\")) | .browser_download_url") && \
+    wget -q -O /usr/bin/bbl $BBL_LATEST && \
     chmod +x /usr/bin/bbl
 
-# Install CF CLI
-RUN wget -O /tmp/cf.tgz 'https://cli.run.pivotal.io/stable?release=linux64-binary&source=github-rel' 2>&1 && \
-  tar xf /tmp/cf.tgz cf && \
-  mv ./cf /usr/local/bin/ && \
-  rm /tmp/cf.tgz
+RUN CREDHUB_LATEST=$(curl -s https://api.github.com/repos/cloudfoundry-incubator/credhub-cli/releases/latest  | \
+    jq -r ".assets[] | select(.name | test(\"${CREDHUB_CLI_ARCH}\")) | .browser_download_url") && \
+    wget -q -O /tmp/credhub.tar.gz $CREDHUB_LATEST && tar xzf /tmp/credhub.tar.gz -C /usr/bin/ ./credhub && \
+    chmod +x /usr/bin/credhub
 
 # Symlink BBR bosh-cli to bosh
 RUN ln -s /usr/bin/bosh-cli /usr/local/bin/bosh
