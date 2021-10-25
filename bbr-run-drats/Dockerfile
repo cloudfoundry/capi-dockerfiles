@@ -30,7 +30,7 @@ RUN BBL_LATEST=$(curl -s https://api.github.com/repos/cloudfoundry/bosh-bootload
     wget -q -O /usr/bin/bbl $BBL_LATEST && \
     chmod +x /usr/bin/bbl
 
-RUN CREDHUB_LATEST=$(curl -s https://api.github.com/repos/cloudfoundry-incubator/credhub-cli/releases/latest  | \
+RUN CREDHUB_LATEST=$(curl -s https://api.github.com/repos/cloudfoundry/credhub-cli/releases/latest  | \
     jq -r ".assets[] | select(.name | test(\"${CREDHUB_CLI_ARCH}\")) | .browser_download_url") && \
     wget -q -O /tmp/credhub.tar.gz $CREDHUB_LATEST && tar xzf /tmp/credhub.tar.gz -C /usr/bin/ ./credhub && \
     chmod +x /usr/bin/credhub
