@@ -1,6 +1,6 @@
 FROM ruby:2.7-buster
 
-ENV bosh_cli_version 6.4.10
+ENV bosh_cli_version 6.4.11
 ENV bbl_version 7.2.12
 
 RUN apt-get update && \

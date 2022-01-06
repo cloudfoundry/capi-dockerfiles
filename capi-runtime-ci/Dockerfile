@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-ENV bosh_cli_version 6.4.10
+ENV bosh_cli_version 6.4.11
 
 ENV HOME /root
 RUN \
