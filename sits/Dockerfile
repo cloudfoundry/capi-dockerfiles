@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-ENV bosh_cli_version 6.4.13
+ENV bosh_cli_version 6.4.14
 ENV bbl_version 7.2.12
 ENV credhub_cli_version 1.7.7
 ENV go_version 1.17.2

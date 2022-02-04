@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV bosh_cli_version 6.4.13
+ENV bosh_cli_version 6.4.14
 
 RUN apk update && \
     apk --no-cache add \
