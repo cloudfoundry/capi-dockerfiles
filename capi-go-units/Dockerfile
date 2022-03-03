@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1-bullseye
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN set -ex \
