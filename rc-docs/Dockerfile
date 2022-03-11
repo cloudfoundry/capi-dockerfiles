@@ -19,6 +19,7 @@ RUN set -ex \
 RUN set -ex \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile.lock \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile \
+    && gem install bundler:2.3.9 \
     && bundle install \
     && rm Gemfile \
     && rm Gemfile.lock \
