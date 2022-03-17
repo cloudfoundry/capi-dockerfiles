@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.15
 
 ENV bosh_cli_version 6.4.17
 
