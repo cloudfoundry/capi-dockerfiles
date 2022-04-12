@@ -44,8 +44,8 @@ RUN \
   wget https://github.com/postmodern/ruby-install/archive/v0.4.1.tar.gz -P /tmp && \
   tar zxf /tmp/v0.4.1.tar.gz -C /tmp && \
   cd /tmp/ruby-install-0.4.1 && make install && \
-  ruby-install ruby 2.7.2 && \
-  rm -rf /usr/local/src/ruby-2.7.2 && \
+  ruby-install ruby 2.7.5 && \
+  rm -rf /usr/local/src/ruby-2.7.5 && \
   rm -rf /tmp/*
 
 RUN \
@@ -53,7 +53,7 @@ RUN \
   cd /tmp/chruby && git reset --hard 310bd34d1fcbb3365814c85018114123cef5a41f && \
   cd /tmp/chruby && ./scripts/setup.sh && \
   echo 'source /usr/local/share/chruby/chruby.sh' >> $HOME/.bashrc && \
-  echo 'chruby 2.7.2' >> $HOME/.bashrc && \
+  echo 'chruby 2.7.5' >> $HOME/.bashrc && \
   rm -rf /tmp/*
 
 RUN \
@@ -61,7 +61,7 @@ RUN \
   bash -l -c "gem install bundler -v 2.1.4 --no-document --force"
 
 # Remove current default versions of bundler as we want to use 2.1.4
-RUN ls /opt/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/specifications/default/bundler-* | grep bundler-2.1.4 -v | xargs rm
+RUN ls /opt/rubies/ruby-2.7.5/lib/ruby/gems/2.7.0/specifications/default/bundler-* | grep bundler-2.1.4 -v | xargs rm
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
