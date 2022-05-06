@@ -1,9 +1,9 @@
 FROM ubuntu:trusty
 
-ENV bosh_cli_version 6.4.17
+ENV bosh_cli_version 7.0.0
 ENV bbl_version 7.2.12
 ENV credhub_cli_version 1.7.7
-ENV go_version 1.17.2
+ENV go_version 1.18.1
 
 RUN \
   echo "****** This is my working directory ******" && \
@@ -40,7 +40,7 @@ RUN \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
-RUN go get github.com/onsi/ginkgo/ginkgo
+RUN go install github.com/onsi/ginkgo/ginkgo@latest
 
 # Install jq
 RUN wget -O /usr/local/bin/jq 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64' && \
