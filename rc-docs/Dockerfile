@@ -16,6 +16,8 @@ RUN set -ex \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN set -ex && gem install bundler:2.3.10
+
 RUN set -ex \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile.lock \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/docs/v3/Gemfile \
