@@ -1,4 +1,4 @@
-FROM ruby:3.0-buster
+FROM ruby:3.1-buster
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN set -ex \
@@ -43,6 +43,7 @@ RUN set -ex \
 RUN set -ex \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile.lock \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile \
+    && bundle config set --local without 'development'
     && bundle install \
     && rm Gemfile \
     && rm Gemfile.lock \
