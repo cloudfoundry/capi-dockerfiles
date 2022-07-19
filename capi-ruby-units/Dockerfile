@@ -43,7 +43,7 @@ RUN set -ex \
 RUN set -ex \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile.lock \
     && wget https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile \
-    && bundle config set --local without 'development'
+    && bundle config set --local without 'development' \
     && bundle install \
     && rm Gemfile \
     && rm Gemfile.lock \
