@@ -3,7 +3,7 @@ FROM ubuntu:trusty
 ENV bosh_cli_version 7.0.1
 ENV bbl_version 7.2.12
 ENV credhub_cli_version 1.7.7
-ENV go_version 1.18.1
+ENV go_version 1.18.5
 
 RUN \
   echo "****** This is my working directory ******" && \
