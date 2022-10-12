@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:jammy
 
 ENV bosh_cli_version 7.0.1
 ENV bbl_version 7.2.12
@@ -22,15 +22,9 @@ RUN \
     build-essential \
     wget \
     curl \
+    git \
     openssh-client \
-    software-properties-common \
     unzip
-
-RUN \
-  add-apt-repository ppa:git-core/ppa -y && \
-  apt-get update && \
-  apt-get install -y git && \
-  apt-get remove -y --purge software-properties-common
 
 ENV GOPATH /go
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
