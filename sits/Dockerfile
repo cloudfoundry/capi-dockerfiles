@@ -16,8 +16,8 @@ RUN \
   ls -hla .. && \
   echo
 
-RUN apt-get update
-RUN apt-get -y install \
+RUN apt update
+RUN apt -y install \
     build-essential \
     wget \
     curl \
