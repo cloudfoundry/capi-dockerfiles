@@ -22,6 +22,7 @@ RUN apt -y install \
     wget \
     curl \
     git \
+    netcat-openbsd \
     openssh-client \
     unzip
 
