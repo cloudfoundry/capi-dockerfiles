@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-ENV bosh_cli_version 7.1.3
+ENV bosh_cli_version 7.1.4
 ENV bbl_version 7.2.12
 ENV credhub_cli_version 2.9.10
 ENV go_version 1.18.5
