@@ -1,20 +1,15 @@
-FROM alpine:latest
+FROM ubuntu:latest
 
 ENV bosh_cli_version 7.2.0
 
-RUN apk update && \
-    apk --no-cache add \
+RUN apt-get update && \
+    apt-get -y install \
     ca-certificates wget bash tar util-linux \
     python3 \
     # needed to render bosh templates
-    ruby ruby-dev \
+    ruby ruby-dev
     # needed to run Google CPI packaging scripts
-    make alpine-sdk
 
-# the Google CPI Go blob is dynamically linked against glibc
-RUN apk add gcompat
-
-RUN gem install json --no-document # json is not a default gem in alpine
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
