@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-get -y install \
     ca-certificates wget bash tar util-linux \
     python3 \
+    build-essential \
     # needed to render bosh templates
     ruby ruby-dev
     # needed to run Google CPI packaging scripts
