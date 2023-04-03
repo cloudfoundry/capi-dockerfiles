@@ -1,4 +1,4 @@
-FROM ruby:3.1-buster
+FROM ruby:3.2-buster
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN set -ex \
