@@ -9,8 +9,8 @@ RUN apt-get update && \
     git \
     build-essential \
     # needed to render bosh templates
-    ruby ruby-dev
-    # needed to run Google CPI packaging scripts
+    ruby ruby-dev \
+    bsdmainutils
 
 
 RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
