@@ -1,4 +1,4 @@
-FROM ruby:3.1-buster
+FROM ruby:3.2-buster
 
 ENV bosh_cli_version 7.2.2
 
