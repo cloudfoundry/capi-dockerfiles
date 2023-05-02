@@ -4,11 +4,9 @@ MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 RUN set -ex \
     && echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections \
     && echo 'mysql-server mysql-server/root_password_again password password' | debconf-set-selections \
-    # add old stretch repo until we can figure out how to get ccng to work with mariadb > 10.1
-    && echo 'deb http://deb.debian.org/debian stretch main' | tee -a /etc/apt/sources.list \
     && apt-get update \
     && apt-get -y install \
-           default-mysql-server=1.0.2 \
+           default-mysql-server \
            postgresql-contrib \
            postgresql \
            apt-transport-https \
