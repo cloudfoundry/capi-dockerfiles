@@ -1,4 +1,4 @@
-FROM cloudfoundry/cf-deployment-concourse-tasks
+FROM cloudfoundry/cf-deployment-concourse-tasks:v15.0.0
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN \
