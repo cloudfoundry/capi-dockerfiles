@@ -3,7 +3,7 @@ FROM ubuntu:bionic
 ENV bosh_cli_version 7.4.1
 ENV bbl_version 7.2.12
 ENV credhub_cli_version 2.9.10
-ENV go_version 1.18.5
+ENV go_version 1.21.3
 
 RUN \
   echo "****** This is my working directory ******" && \
@@ -34,7 +34,7 @@ RUN \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
-RUN go install github.com/onsi/ginkgo/ginkgo@latest
+RUN go install github.com/onsi/ginkgo/v2/ginkgo@latest
 
 # Install jq
 RUN wget -O /usr/local/bin/jq 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64' && \
