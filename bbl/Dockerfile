@@ -1,4 +1,4 @@
-FROM cloudfoundry/cf-deployment-concourse-tasks:v15.0.0
+FROM cloudfoundry/cf-deployment-concourse-tasks
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN \
@@ -15,11 +15,10 @@ RUN wget https://github.com/square/certstrap/releases/download/v1.2.0/certstrap-
   mv certstrap-1.2.0-linux-amd64 /go/bin/certstrap && \
   chmod u+x /go/bin/certstrap
 
-RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" >> \
-  /etc/apt/sources.list.d/google-cloud-sdk.list && \
-  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | tee /usr/share/keyrings/cloud.google.asc && \
   apt-get update && \
-  apt-get -y install google-cloud-sdk && \
+  apt-get -y install google-cloud-cli && \
   apt-get clean
 
 # https://kubernetes.io/docs/tasks/tools/install-kubectl/
