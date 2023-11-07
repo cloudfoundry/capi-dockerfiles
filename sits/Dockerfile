@@ -1,8 +1,8 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 
 ENV bosh_cli_version 7.4.1
-ENV bbl_version 7.2.12
-ENV credhub_cli_version 2.9.10
+ENV bbl_version 9.0.13
+ENV credhub_cli_version 2.9.22
 ENV go_version 1.21.3
 
 RUN \
@@ -42,7 +42,7 @@ RUN wget -O /usr/local/bin/jq 'https://github.com/stedolan/jq/releases/download/
 
 # Install bbl
 RUN \
-  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64 -P /tmp && \
+  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_amd64 -P /tmp && \
   mv /tmp/bbl-* /usr/local/bin/bbl && \
   cd /usr/local/bin && \
   chmod +x bbl
@@ -59,6 +59,6 @@ RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.k
 
 # credhub-cli
 RUN \
-  wget https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${credhub_cli_version}/credhub-linux-${credhub_cli_version}.tgz -P /tmp && \
-  tar xzvf /tmp/credhub-linux-${credhub_cli_version}.tgz -C /usr/local/bin && \
+  wget https://github.com/cloudfoundry/credhub-cli/releases/download/${credhub_cli_version}/credhub-linux-amd64-${credhub_cli_version}.tgz -P /tmp && \
+  tar xzvf /tmp/credhub-linux-amd64-${credhub_cli_version}.tgz -C /usr/local/bin && \
   chmod +x /usr/local/bin/credhub
