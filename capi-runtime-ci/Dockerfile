@@ -1,6 +1,6 @@
 FROM ruby:3.2-buster
 
-ENV bosh_cli_version 7.5.0
+ENV bosh_cli_version 7.5.1
 
 ENV HOME /root
 RUN \
