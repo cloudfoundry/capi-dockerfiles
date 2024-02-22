@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ENV bosh_cli_version 7.5.2
+ENV bosh_cli_version 7.5.3
 
 RUN apt-get update && \
     apt-get -y install \

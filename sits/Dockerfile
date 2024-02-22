@@ -1,6 +1,6 @@
 FROM ubuntu:jammy
 
-ENV bosh_cli_version 7.5.2
+ENV bosh_cli_version 7.5.3
 ENV bbl_version 9.0.13
 ENV credhub_cli_version 2.9.22
 ENV go_version 1.21.3
