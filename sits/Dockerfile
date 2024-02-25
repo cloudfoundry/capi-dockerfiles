@@ -49,7 +49,7 @@ RUN \
 
 # Install the golang bosh CLI
 RUN \
-  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64 --output-document="/usr/bin/bosh" && \
+  wget https://storage.googleapis.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64 --output-document="/usr/bin/bosh" && \
   chmod +x /usr/bin/bosh
 
 # Install the cf CLI
