@@ -13,7 +13,7 @@ RUN apt-get update && \
     bsdmainutils
 
 
-RUN wget -O /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
+RUN wget -O /usr/local/bin/bosh https://storage.googleapis.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
 RUN chmod +x /usr/local/bin/bosh
 
 # Every once in a while, you'll see "Updates are available for some Cloud SDK components."
