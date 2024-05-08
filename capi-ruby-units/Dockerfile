@@ -1,30 +1,31 @@
-FROM ruby:3.2-bookworm
+FROM ruby:3.2-buster
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 RUN set -ex \
+    && echo 'mysql-server mysql-server/root_password password password' | debconf-set-selections \
+    && echo 'mysql-server mysql-server/root_password_again password password' | debconf-set-selections \
     && apt-get update \
     && apt-get -y install \
-           postgresql \
+           default-mysql-server \
            postgresql-contrib \
-           libpq-dev \
-           mariadb-server \
-           libmariadb-dev \
+           postgresql \
            apt-transport-https \
            software-properties-common \
     && apt-get clean \
+    && chmod 755 /var/lib/mysql \
     && sed -i 's/peer/trust/' "$(find /etc/postgresql -name pg_hba.conf)" \
     && sed -i 's/md5/trust/' "$(find /etc/postgresql -name pg_hba.conf)" \
-    && service mariadb restart \
+    && service mysql restart \
     && service postgresql restart \
-    && echo 'CREATE DATABASE cc_test;' | mariadb -u root -ppassword \
+    && echo 'CREATE DATABASE cc_test;' | mysql -u root -ppassword \
     && createdb -U postgres cc_test \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV GOPATH $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
 RUN \
-  wget https://storage.googleapis.com/golang/go1.21.9.linux-amd64.tar.gz -P /tmp && \
-  tar xzvf /tmp/go1.21.9.linux-amd64.tar.gz -C /usr/local && \
+  wget https://storage.googleapis.com/golang/go1.21.3.linux-amd64.tar.gz -P /tmp && \
+  tar xzvf /tmp/go1.21.3.linux-amd64.tar.gz -C /usr/local && \
   mkdir $GOPATH && \
   rm -rf /tmp/*
 
