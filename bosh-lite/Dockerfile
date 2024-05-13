@@ -10,7 +10,8 @@ RUN apt-get update && \
     build-essential \
     # needed to render bosh templates
     ruby ruby-dev \
-    bsdmainutils
+    bsdmainutils \
+    wamerican
 
 
 RUN wget -O /usr/local/bin/bosh https://storage.googleapis.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64
