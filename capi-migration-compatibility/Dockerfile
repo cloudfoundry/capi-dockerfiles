@@ -1,7 +1,7 @@
 FROM ruby:3.2-buster
 
 ENV bosh_cli_version 7.6.1
-ENV bbl_version 7.2.12
+ENV bbl_version BBL_VERSION
 
 RUN apt-get update && \
     apt-get -y install \
