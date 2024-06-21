@@ -21,13 +21,13 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget -O /usr/local/bin/bosh https://storage.googleapis.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64 && \
+RUN wget -q -O /usr/local/bin/bosh https://storage.googleapis.com/bosh-cli-artifacts/bosh-cli-${bosh_cli_version}-linux-amd64 && \
     chmod +x /usr/local/bin/bosh
 
 # Every once in a while, you'll see "Updates are available for some Cloud SDK components."
 # You can find the latest downloads at https://cloud.google.com/sdk/downloads
-RUN wget -O /tmp/google-sdk.zip https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && \
-    unzip /tmp/google-sdk.zip -d $HOME && \
+RUN wget -q -O /tmp/google-sdk.zip https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && \
+    unzip -q /tmp/google-sdk.zip -d $HOME && \
     rm /tmp/google-sdk.zip
 
 RUN $HOME/google-cloud-sdk/install.sh \
