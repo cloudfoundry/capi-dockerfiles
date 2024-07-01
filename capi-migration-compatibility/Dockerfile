@@ -2,7 +2,7 @@ FROM ruby:3.2-buster
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
 ENV bosh_cli_version 7.6.1
-ENV bbl_version 9.0.22
+ENV bbl_version 9.0.23
 
 RUN apt-get update && \
     apt-get -y install \
