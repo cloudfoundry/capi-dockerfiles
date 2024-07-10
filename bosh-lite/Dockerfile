@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
 
-ENV bosh_cli_version 7.6.1
+ENV bosh_cli_version 7.6.2
 
 RUN apt-get update && \
     apt-get -y install \
