@@ -20,6 +20,14 @@ RUN service mysql restart && \
     sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/16/main/pg_hba.conf && \
     service postgresql restart
 
+RUN wget -q https://raw.githubusercontent.com/cloudfoundry/capi-release/develop/spec/Gemfile.lock && \
+    wget -q https://raw.githubusercontent.com/cloudfoundry/capi-release/develop/spec/Gemfile && \
+    bundle config set --local without 'development' && \
+    bundle install && \
+    rm Gemfile && \
+    rm Gemfile.lock && \
+    rm -rf /tmp/* /var/tmp/*
+
 RUN wget -q https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile.lock && \
     wget -q https://raw.githubusercontent.com/cloudfoundry/cloud_controller_ng/main/Gemfile && \
     bundle config set --local without 'development' && \
