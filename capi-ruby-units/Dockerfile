@@ -1,5 +1,6 @@
 FROM ruby:3.2-buster
-MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
+LABEL org.opencontainers.image.authors="CF CAPI team"
+LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
 RUN apt-get update && \
     apt-get -y install \

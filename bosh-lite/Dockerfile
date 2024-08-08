@@ -1,5 +1,6 @@
 FROM ubuntu:latest
-MAINTAINER https://github.com/cloudfoundry/capi-dockerfiles
+LABEL org.opencontainers.image.authors="CF CAPI team"
+LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
 ENV bosh_cli_version 7.6.2
 
