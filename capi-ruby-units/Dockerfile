@@ -1,4 +1,4 @@
-FROM ruby:3.2-buster
+FROM ruby:3.2-bookworm
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
@@ -17,7 +17,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN service mysql restart && \
+RUN ln -s /etc/init.d/mariadb /etc/init.d/mysql && \
+    service mysql restart && \
     sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/16/main/pg_hba.conf && \
     service postgresql restart
 
