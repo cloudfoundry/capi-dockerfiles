@@ -19,6 +19,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
 
 RUN ln -s /etc/init.d/mariadb /etc/init.d/mysql && \
     service mysql restart && \
+    mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('password');" && \
     sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/16/main/pg_hba.conf && \
     service postgresql restart
 
