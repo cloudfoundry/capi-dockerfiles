@@ -10,3 +10,9 @@ cd capi-ruby-units
 docker build -t $(cat repository) .
 docker push $(cat repository)
 ```
+
+To manually build the capi-ruby-units image on an ARM Mac (mysql 8.0 is not available for arm64):
+```
+cd capi-ruby-units
+docker build --platform linux/amd64 -t $(cat repository) .
+```
