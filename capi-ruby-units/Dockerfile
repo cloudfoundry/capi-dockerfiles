@@ -5,6 +5,7 @@ LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerf
 RUN apt-get update && \
     apt-get -y install \
       lsb-release \
+      lsof \
       zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
