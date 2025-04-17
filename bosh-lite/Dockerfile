@@ -2,7 +2,7 @@ FROM ubuntu:latest
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
-ENV bosh_cli_version=7.9.4
+ENV bosh_cli_version=7.9.5
 
 RUN apt-get update && \
     apt-get -y install \
