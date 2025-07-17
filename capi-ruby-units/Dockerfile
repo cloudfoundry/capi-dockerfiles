@@ -26,7 +26,7 @@ RUN wget -q https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb && \
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
     wget -q -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && \
     apt-get update && \
-    apt-get -y install postgresql-16 && \
+    apt-get -y install postgresql-17 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
