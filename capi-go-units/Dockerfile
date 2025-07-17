@@ -14,7 +14,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/16/main/pg_hba.conf && \
+RUN sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/17/main/pg_hba.conf && \
     service postgresql restart && \
     createdb -U postgres locket && \
     psql -h localhost -U postgres -c "CREATE USER locket WITH createrole superuser password 'locket_pw';"
