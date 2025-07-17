@@ -34,7 +34,7 @@ COPY ./mysql /etc/init.d/mysql
 RUN chmod a+x /etc/init.d/mysql && \
     service mysql start && \
     mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';" && \
-    sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/16/main/pg_hba.conf && \
+    sed -i 's/peer$/trust/;s/scram-sha-256/trust/' /etc/postgresql/17/main/pg_hba.conf && \
     service postgresql restart
 
 RUN wget -q https://raw.githubusercontent.com/cloudfoundry/capi-release/develop/spec/Gemfile.lock && \
