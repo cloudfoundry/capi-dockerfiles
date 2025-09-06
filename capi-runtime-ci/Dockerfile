@@ -2,7 +2,7 @@ FROM ruby:3.2-bookworm
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
-ENV bosh_cli_version=7.9.10
+ENV bosh_cli_version=7.9.11
 
 RUN apt-get update && \
     apt-get clean && \
