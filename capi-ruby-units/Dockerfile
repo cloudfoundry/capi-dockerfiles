@@ -10,13 +10,13 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget -q https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb && \
+RUN wget -q https://dev.mysql.com/get/mysql-apt-config_0.8.36-1_all.deb && \
     export DEBIAN_FRONTEND=noninteractive && \
     echo 'mysql-apt-config mysql-apt-config/select-preview select ' | debconf-set-selections && \
     echo 'mysql-apt-config mysql-apt-config/select-product select Ok' | debconf-set-selections && \
     echo 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0' | debconf-set-selections && \
     echo 'mysql-apt-config mysql-apt-config/select-tools select ' | debconf-set-selections && \
-    dpkg -i  ./mysql-apt-config_0.8.33-1_all.deb && \
+    dpkg -i  ./mysql-apt-config_0.8.36-1_all.deb && \
     apt-get update && \
     apt-get install -y mysql-server && \
     apt-get clean && \
