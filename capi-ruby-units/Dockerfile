@@ -1,4 +1,4 @@
-FROM ruby:4.0-bookworm
+FROM ruby:4.0-trixie
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
@@ -14,7 +14,7 @@ RUN wget -q https://dev.mysql.com/get/mysql-apt-config_0.8.36-1_all.deb && \
     export DEBIAN_FRONTEND=noninteractive && \
     echo 'mysql-apt-config mysql-apt-config/select-preview select ' | debconf-set-selections && \
     echo 'mysql-apt-config mysql-apt-config/select-product select Ok' | debconf-set-selections && \
-    echo 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0' | debconf-set-selections && \
+    echo 'mysql-apt-config mysql-apt-config/select-server select mysql-8.4-lts' | debconf-set-selections && \
     echo 'mysql-apt-config mysql-apt-config/select-tools select ' | debconf-set-selections && \
     dpkg -i  ./mysql-apt-config_0.8.36-1_all.deb && \
     apt-get update && \
