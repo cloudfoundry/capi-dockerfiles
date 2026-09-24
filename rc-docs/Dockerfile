@@ -1,4 +1,4 @@
-FROM ruby:3.3-bookworm
+FROM ruby:4.0-bookworm
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
