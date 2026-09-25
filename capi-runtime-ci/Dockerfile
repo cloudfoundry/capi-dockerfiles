@@ -2,7 +2,7 @@ FROM ruby:4.0-trixie
 LABEL org.opencontainers.image.authors="CF CAPI team"
 LABEL org.opencontainers.image.url="https://github.com/cloudfoundry/capi-dockerfiles"
 
-ENV bosh_cli_version=7.10.11
+ENV bosh_cli_version=7.10.12
 
 RUN apt-get update && \
     apt-get clean && \
